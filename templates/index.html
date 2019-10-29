@@ -8,12 +8,14 @@
 
 </head>
 <body>
+    <h1>Classic Car Game</h1>
     <div class="main-menu" id="main-menu">
-        <img src="{{ url_for('static', filename="images/game-start.jpg") }}">
+        <img alt="start-page" src="{{ url_for('static', filename="images/game-start.jpg") }}">
     </div>
 
     <div class="game-board">
-        <img id="car" src="{{ url_for('static', filename='images/car.svg') }}">
+        <img alt="fence" id="fence" src="{{ url_for('static', filename='images/fence.svg') }}">
+        <img alt="car" id="car" src="{{ url_for('static', filename='images/car.svg') }}">
     </div>
 </body>
 </html>

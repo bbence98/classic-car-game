@@ -6,9 +6,7 @@ function main() {
     menu.addEventListener('click', function () {
         showHide(img, gameBoard)
     });
-
-
-    }
+}
 
 
 function showHide(firstElement, secondElement) {
