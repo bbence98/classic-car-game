@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Classic car game</title>
+    <script src="{{ url_for('static', filename='js/game.js') }}" defer></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+    <div class="main-menu" id="main-menu">
+        <img src="{{ url_for('static', filename="images/game-start.jpg") }}">
+    </div>
+
+    <div class="game-board">
+        <img id="car" src="{{ url_for('static', filename='images/car.svg') }}">
+    </div>
+</body>
+</html>

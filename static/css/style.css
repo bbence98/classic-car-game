@@ -1,0 +1,9 @@
+#main-menu {
+    text-align: center;
+}
+
+.game-board {
+    margin: auto;;
+    background: black;
+    width: 600px;
+    height: 900px;}
