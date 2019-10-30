@@ -37,38 +37,28 @@ function showHide(firstElement, secondElement) {
 }
 
 
-function putPlayer(coordinateX, coordinateY) {
-    const cell = document.querySelector(`[data-coordinate-x="${coordinateX}"] ~ [data-coordinate-y="${coordinateY}"]`);
-    const node = document.createElement("img" );
-    node.setAttribute("src", 'static/images/car.svg');
-    node.setAttribute('id', 'main_car');
-    cell.appendChild(node);
+
+
+function put(tag, coordinateX, coordinateY) {
+    const element = document.querySelector(
+        `#${tag}_hidden[data-coordinate-x="${coordinateX}"][data-coordinate-y="${coordinateY}"]`
+    );
+    element.setAttribute('id', `${tag}`)
 }
+function hide(tag, coordinateX, coordinateY) {
+    const player = document.querySelector(`#${tag}`);
+    player.setAttribute('id', 'main_car_hidden')}
 
-
-function putEnemies(coordinateX, coordinateY) {
-    const enemy = document.querySelector(`.game-cell[data-coordinate-x="${coordinateX}"][data-coordinate-y="${coordinateY}"]`);
-    const node = document.createElement("img");
-    node.setAttribute("src", 'static/images/enemy.svg');
-    node.setAttribute('id', 'enemy');
-    enemy.appendChild(node);
+function hide_player(tag) {
+    const player = document.querySelector(`#${tag}`);
+    player.setAttribute('id', 'main_car_hidden')
 }
-
-
-function putFence(coordinateX, coordinateY) {
-    const cell = document.querySelector(`.game-cell[data-coordinate-x="${coordinateX}"][data-coordinate-y="${coordinateY}"]`);
-    const node = document.createElement("img");
-    node.setAttribute("src", 'static/images/fence.svg');
-    node.setAttribute('id', 'fence');
-    cell.appendChild(node);
-}
-
 
 function putAllFences() {
     for (let x = 1; x < 18; x++) {
         for (let y = 0; y < 26; y++) {
             if (y % 4 === 0 && x === 1 || x === 17 && y % 4 === 0) {
-                putFence(x, y)
+                put('fence',`${x}`, `${y}`)
             }
         }
     }
@@ -82,9 +72,9 @@ function main() {
     const img = document.querySelector('#main-menu img');
     menu.addEventListener('click', function () {
         showHide(img, gameBoard);
-        putPlayer(6, 21);
+        put('main_car', 6, 21);
         putAllFences();
-        putEnemies(6, 0);
+        put('enemy',6, 0);
     });
 }
 

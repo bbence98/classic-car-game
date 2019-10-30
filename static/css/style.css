@@ -22,6 +22,12 @@ h1 {
     border-width: 0;
 }
 
+#enemy_hidden {
+    width: 99px;
+    padding: 0;
+    border-width: 0;
+    display: none;
+}
 
 #main_car {
     width: 99px;
@@ -30,10 +36,24 @@ h1 {
     border-width: 0;
 }
 
+#main_car_hidden {
+    width: 99px;
+    margin-left: -33px;
+    padding: 0;
+    border-width: 0;
+    display: none;
+}
+
 
 #fence {
     height: 66px;
     width: 33px;
+}
+
+#fence_hidden {
+    height: 66px;
+    width: 33px;
+    display: none;
 }
 
 .game-cell {

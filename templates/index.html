@@ -20,6 +20,12 @@
                          data-coordinate-x="{{ col }}"
                          data-coordinate-y="{{ row }}"
                          aria-disabled="false">
+                        <img alt="main_car" src="{{ url_for('static', filename="images/car.svg")}}"
+                             id="main_car_hidden" data-coordinate-x="{{ col }}" data-coordinate-y="{{ row }}">
+                        <img alt="enemy" src="{{ url_for('static', filename="images/enemy.svg")}}"
+                             id="enemy_hidden" data-coordinate-x="{{ col }}" data-coordinate-y="{{ row }}">
+                        <img alt="fence" src="{{ url_for('static', filename="images/fence.svg")}}"
+                             id="fence_hidden" data-coordinate-x="{{ col }}" data-coordinate-y="{{ row }}">
                     </div>
                 {% endfor %}
             </div>
