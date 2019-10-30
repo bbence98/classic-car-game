@@ -68,8 +68,26 @@ function getAllFences() {
     return store;
 }
 
+function create_matrix(nested_items) {
+    let matrix = create_nested_object(26,18);
+    const fences =getAllFences();
+    for (let fence of fences){
+        matrix[fence[1]][fence[0]] = 'fence'
+    }
+    matrix[nested_items.main_car[1]][nested_items.main_car[0]] = 'main_car';
+    matrix[nested_items.enemy_car[1]][nested_items.enemy_car[0]] = 'enemy_car';
+    return matrix
+}
+
+
 
 function main() {
+    const properities = {
+        'main_car' : [9, 21],
+        'enemy_car' : [6,0]
+    };
+
+
     const menu = document.querySelector('#main-menu');
     const gameBoard = document.querySelector('.game-board');
     gameBoard.style.display = 'none';
@@ -77,8 +95,8 @@ function main() {
     menu.addEventListener('click', function () {
         showHide(img, gameBoard);
         put('main_car', 9, 21);
-        getAllFences();
         put('enemy',6, 0);
+        console.log(create_matrix(properities))
     });
 }
 
