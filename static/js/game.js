@@ -79,6 +79,17 @@ function create_matrix(nested_items) {
     return matrix
 }
 
+function move_car() { // -3 place
+    document.addEventListener('keydown', function (event) {
+        const a = event.keyCode;
+        const d = event.keyCode;
+        if (a === 65) {
+            console.log('a key pressed')
+        } else if (d === 68) {
+            console.log('d key pressed')
+        }
+    })
+}
 
 
 function main() {
@@ -96,7 +107,7 @@ function main() {
         showHide(img, gameBoard);
         put('main_car', 9, 21);
         put('enemy',6, 0);
-        console.log(create_matrix(properities))
+        move_car(properities.main_car);
     });
 }
 
