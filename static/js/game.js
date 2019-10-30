@@ -50,7 +50,7 @@ function main() {  // 4 x 21
     const cell = document.querySelector('[data-coordinate-y="21"] ~ [data-coordinate-x="4"]');
     const node = document.createElement("img" );
     node.setAttribute("src", 'static/images/car.svg');
-    node.setAttribute('id', 'car');
+    node.setAttribute('id', 'main_car');
     cell.appendChild(node);
 
 }
