@@ -56,14 +56,16 @@ function hide_player(tag) {
     player.setAttribute('id', 'main_car_hidden')
 }
 
-function putAllFences() {
+function getAllFences() {
+    let store = [];
     for (let x = 1; x < 18; x++) {
         for (let y = 0; y < 26; y++) {
             if (y % 4 === 0 && x === 1 || x === 17 && y % 4 === 0) {
-                put('fence',`${x}`, `${y}`)
+                store.push([x,y])
             }
         }
     }
+    return store;
 }
 
 
@@ -74,8 +76,8 @@ function main() {
     const img = document.querySelector('#main-menu img');
     menu.addEventListener('click', function () {
         showHide(img, gameBoard);
-        put('main_car', 6, 21);
-        putAllFences();
+        put('main_car', 9, 21);
+        getAllFences();
         put('enemy',6, 0);
     });
 }
