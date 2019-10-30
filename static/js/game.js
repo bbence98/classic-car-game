@@ -38,7 +38,6 @@ function showHide(firstElement, secondElement) {
 
 
 function main() {
-    debugger
     const menu = document.querySelector('#main-menu');
     const gameBoard = document.querySelector('.game-board');
     gameBoard.style.display = 'none';
