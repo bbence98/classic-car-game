@@ -37,13 +37,14 @@ function showHide(firstElement, secondElement) {
 }
 
 
-function main() {  // 4 x 21
+function main() {
+    debugger
     const menu = document.querySelector('#main-menu');
     const gameBoard = document.querySelector('.game-board');
     gameBoard.style.display = 'none';
     const img = document.querySelector('#main-menu img');
     menu.addEventListener('click', function () {
-        showHide(img, gameBoard)
+        showHide(img, gameBoard);
     });
 
 
