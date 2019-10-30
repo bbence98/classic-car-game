@@ -75,16 +75,25 @@ function create_matrix(nested_items) {
         matrix[fence[1]][fence[0]] = 'fence'
     }
     matrix[nested_items.main_car[1]][nested_items.main_car[0]] = 'main_car';
-    matrix[nested_items.enemy_car[1]][nested_items.enemy_car[0]] = 'enemy_car';
+    matrix[nested_items.enemy[1]][nested_items.enemy[0]] = 'enemy';
     return matrix
 }
 
+function draw_matrix(matrix) {
+    for (let [key, value] of Object.entries(matrix)) {
+        for (let [key2, value2] of Object.entries(value)) {
+            if (value2 !== null) {
+                put(`${value2}`, `${key2}`, `${key}`)
+            }
+        }
+    }
+}
 
 
 function main() {
     const properities = {
         'main_car' : [9, 21],
-        'enemy_car' : [6,0]
+        'enemy' : [6,0]
     };
 
 
@@ -94,10 +103,11 @@ function main() {
     const img = document.querySelector('#main-menu img');
     menu.addEventListener('click', function () {
         showHide(img, gameBoard);
-        put('main_car', 9, 21);
-        put('enemy',6, 0);
-        console.log(create_matrix(properities))
+        let matrix = create_matrix(properities);
+        draw_matrix(matrix);
+        set_session_Json('matrix', matrix)
     });
+
 }
 
 
