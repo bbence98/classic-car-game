@@ -46,11 +46,11 @@ function put(tag, coordinateX, coordinateY) {
     element.setAttribute('id', `${tag}`)
 }
 function hide(tag, coordinateX, coordinateY) {
-    const player = document.querySelector(`#${tag}`);
+    const player = document.querySelector(`#${tag}[data-coordinate-x="${coordinateX}"][data-coordinate-y="${coordinateY}"]`);
     player.setAttribute('id', 'main_car_hidden')}
 
 function hide_player(tag) {
-    const player = document.querySelector(`#${tag}`);
+    const player = document.querySelector(`#${tag}[data-coordinate-x="${coordinateX}"][data-coordinate-y="${coordinateY}"]`);
     player.setAttribute('id', 'main_car_hidden')
 }
 
