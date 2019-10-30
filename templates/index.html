@@ -12,9 +12,9 @@
     <div class="main-menu" id="main-menu">
         <img alt="start-page" src="{{ url_for('static', filename="images/game-start.jpg") }}">
     </div>
-    <div class="game-board"  data-row-num="{{ row_num }}" data-col-num="{{ col_num }}">
+    <div class="game-board" data-row-num="{{ row_num }}" data-col-num="{{ col_num }}">
         {% for row in range(row_num) %}
-            <div class="cell-container">
+            <div class="cell-container" onkeydown="move_car">
                 {% for col in range(col_num) %}
                     <div class="game-cell"
                          data-coordinate-x="{{ col }}"

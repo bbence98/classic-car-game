@@ -89,6 +89,17 @@ function draw_matrix(matrix) {
     }
 }
 
+function move_car() { // -3 place
+    document.addEventListener('keydown', function (event) {
+        const a = event.keyCode;
+        const d = event.keyCode;
+        if (a === 65) {
+            console.log('a key pressed')
+        } else if (d === 68) {
+            console.log('d key pressed')
+        }
+    })
+}
 
 function main() {
     const properities = {
@@ -105,6 +116,7 @@ function main() {
         showHide(img, gameBoard);
         let matrix = create_matrix(properities);
         draw_matrix(matrix);
+        move_car(properities.main_car);
         set_session_Json('matrix', matrix)
     });
 
