@@ -14,7 +14,7 @@
     </div>
         <div class="game-board"  data-row-num="{{ row_num }}" data-col-num="{{ col_num }}">
             {% for row in range(row_num) %}
-                <div>
+                <div class="cell-container">
                     {% for col in range(col_num) %}
                         <div class="game-cell"
                              data-coordinate-x="{{ col }}"
