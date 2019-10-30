@@ -5,7 +5,7 @@
 .game-board {
     margin: auto;
     background: black;
-    width: 700px;
+    width: 800px;
     height: 900px;
 }
 
@@ -16,13 +16,37 @@ h1 {
 }
 
 #car {
-    width: 100px;
-    margin-left: 33px;
-    margin-top: 766px;
+    width: 99px;
+    margin: 0;
+    padding: 0;
+    border-width: 0;
 }
 
 #fence {
     height: 67px;
     width: 33px;
-    margin-left: 33px;
+}
+
+.game-cell {
+    width: 100px;
+    height: 134px;
+    display: inline-block;
+    text-align: center;
+    color: grey;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+}
+
+img {
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+}
+
+div {
+    margin: 0;
+    padding: 0;
+    border-width: 0;
 }
