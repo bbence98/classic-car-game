@@ -5,8 +5,8 @@
 .game-board {
     margin: auto;
     background: black;
-    width: 800px;
-    height: 900px;
+    width: 706px;
+    height: 938px;
 }
 
 h1 {
@@ -16,19 +16,19 @@ h1 {
 }
 
 #car {
-    width: 99px;
+    width: 100px;
     margin: 0;
     padding: 0;
     border-width: 0;
 }
 
-#fence {
+#frame {
     height: 67px;
     width: 33px;
 }
 
 .game-cell {
-    width: 100px;
+    width: 97px;
     height: 134px;
     display: inline-block;
     text-align: center;

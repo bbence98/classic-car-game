@@ -12,7 +12,7 @@
     <div class="main-menu" id="main-menu">
         <img alt="start-page" src="{{ url_for('static', filename="images/game-start.jpg") }}">
     </div>
-        <div class="game-board"  data-row-num="{{ row_num }}" data-col-num="{{ col_num }}" data-win-size="{{ win_size }}">
+        <div class="game-board"  data-row-num="{{ row_num }}" data-col-num="{{ col_num }}">
             {% for row in range(row_num) %}
                 <div>
                     {% for col in range(col_num) %}
@@ -20,7 +20,6 @@
                              data-coordinate-x="{{ col }}"
                              data-coordinate-y="{{ row }}"
                              aria-disabled="false">
-                            <img alt="car" id="car" src="{{ url_for('static', filename='images/car.svg') }}">
                         </div>
                     {% endfor %}
                 </div>
