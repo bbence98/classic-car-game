@@ -49,7 +49,7 @@ function hide(tag, coordinateX, coordinateY) {
     const player = document.querySelector(
         `#${tag}[data-coordinate-x="${coordinateX}"][data-coordinate-y="${coordinateY}"]`
     );
-    player.setAttribute('id', 'main_car_hidden')}
+    player.setAttribute('id', `${tag}_hidden`)}
 
 function hide_player(tag) {
     const player = document.querySelector(`#${tag}`);
@@ -58,8 +58,8 @@ function hide_player(tag) {
 
 function getAllFences() {
     let store = [];
-    for (let x = 1; x < 18; x++) {
-        for (let y = 0; y < 26; y++) {
+    for (let x = 1; x < 19; x++) {
+        for (let y = 0; y < 28; y++) {
             if (y % 4 === 0 && x === 1 || x === 17 && y % 4 === 0) {
                 store.push([x,y])
             }
@@ -69,10 +69,10 @@ function getAllFences() {
 }
 
 function create_matrix(nested_items) {
-    let matrix = create_nested_object(26,18);
+    let matrix = create_nested_object(28,19);
     const fences =getAllFences();
     for (let fence of fences){
-        matrix[fence[1]][fence[0]] = 'fence'
+        matrix[fence[1]][fence[0]] = 'fence';
     }
     matrix[nested_items.main_car[1]][nested_items.main_car[0]] = 'main_car';
     matrix[nested_items.enemy[1]][nested_items.enemy[0]] = 'enemy';
@@ -90,19 +90,50 @@ function draw_matrix(matrix) {
 }
 
 function move_car() { // -3 place
-    document.addEventListener('keydown', function (event) {
+    document.addEventListener('keyup', function (event) {
+        let pos = get_session_Json('car_pos');
+        let matrix = get_session_Json('matrix');
         const a = event.keyCode;
         const d = event.keyCode;
-        if (a === 65) {
-            console.log('a key pressed')
-        } else if (d === 68) {
-            console.log('d key pressed')
+        if (a === 65 && 3 < pos[0] ) {
+            hide('main_car', pos[0], pos[1]);
+            matrix[pos[1]][pos[0]] = null;
+            pos[0] -= 1;
+            put('main_car', pos[0], pos[1]);
+            matrix[pos[1]][pos[0]] = 'main_car';
+        } else if (d === 68 && pos[0] < 15) {
+            hide('main_car', pos[0], pos[1]);
+            matrix[pos[1]][pos[0]] = null;
+            pos[0] += 1;
+            put('main_car', pos[0], pos[1]);
+            matrix[pos[1]][pos[0]] = 'main_car';
         }
+        set_session_Json('car_pos', pos);
+        set_session_Json('matrix', matrix);
+
     })
 }
 
+function move(item,matrix) {
+    let matrix2 = create_nested_object(28,19);
+    for (let [key, value] of Object.entries(matrix)) {
+        for (let [key2, value2] of Object.entries(value)) {
+            if (value2 === item) {
+                if (key < parseInt('27')) {
+                    hide(item,key2,key);
+                    matrix2[parseInt(key) + 1][key2] = item;
+                } else {
+                    hide(item,key2,key);
+                    matrix2[0][key2] = item
+                }
+            }
+        }
+    }
+    return matrix2
+}
+
 function main() {
-    const properities = {
+    let properties = {
         'main_car' : [9, 21],
         'enemy' : [6,0]
     };
@@ -114,12 +145,19 @@ function main() {
     const img = document.querySelector('#main-menu img');
     menu.addEventListener('click', function () {
         showHide(img, gameBoard);
-        let matrix = create_matrix(properities);
+        let matrix = create_matrix(properties);
         draw_matrix(matrix);
-        move_car(properities.main_car);
-        set_session_Json('matrix', matrix)
+        move_car(properties.main_car);
+        set_session_Json('matrix', matrix);
+        set_session_Json('car_pos', properties.main_car);
+        move_car();
+        setInterval(function () {
+            let matrix = get_session_Json('matrix');
+            matrix = move('fence', matrix);
+            draw_matrix(matrix);
+            set_session_Json('matrix', matrix)
+        }, 500)
     });
-
 }
 
 
